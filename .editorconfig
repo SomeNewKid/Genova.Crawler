@@ -223,6 +223,7 @@ dotnet_diagnostic.SA1006.severity = none   # Do not require 's_' prefix for stat
 dotnet_diagnostic.SA1010.severity = none   # Allow use of [] for collection initialization.
 dotnet_diagnostic.SA1101.severity = none   # Don't use `this.field`, so as to allow `_field`.
 dotnet_diagnostic.SA1122.severity = none   # Allow use of "" rather than string.Empty.
+dotnet_diagnostic.SA1200.severity = none   # Allow `using` outside of namespace.
 dotnet_diagnostic.SA1309.severity = none   # Allow fields to start with an underscore.
 dotnet_diagnostic.SA1311.severity = none   # Allow static readonly fields to use '_camelCase'
 dotnet_diagnostic.SA1633.severity = none   # Don't require an XML file header.
