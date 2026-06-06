@@ -2,7 +2,6 @@
 // See the LICENSE file in the project root for more information.
 
 using Genova.Crawler.Resources;
-using Genova.Testing.QualityTests;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 
 namespace Genova.Crawler.QualityTests;
