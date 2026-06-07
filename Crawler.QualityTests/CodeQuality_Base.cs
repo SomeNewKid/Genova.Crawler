@@ -95,11 +95,7 @@ public abstract class CodeQuality_Base
             return;
         }
 
-        string solutionFolder = $@"C:\Git\{_expectedAssemblyName}";
-        if (!Directory.Exists(solutionFolder))
-        {
-            Assert.Fail($"Solution folder not found: {solutionFolder}");
-        }
+        string solutionFolder = FindSolutionFolder();
 
         string folderPrefix = _expectedAssemblyName.Replace("Genova.", "");
         foreach (string directory in Directory.GetDirectories(solutionFolder))
@@ -114,6 +110,25 @@ public abstract class CodeQuality_Base
                 Process_all_files_in_folder(directory);
             }
         }
+    }
+
+    private string FindSolutionFolder()
+    {
+        string solutionFileName = $"{_expectedAssemblyName}.sln";
+        DirectoryInfo? directory = new(AppContext.BaseDirectory);
+
+        while (directory != null)
+        {
+            if (File.Exists(Path.Combine(directory.FullName, solutionFileName)))
+            {
+                return directory.FullName;
+            }
+
+            directory = directory.Parent;
+        }
+
+        Assert.Fail($"Solution folder containing '{solutionFileName}' could not be found.");
+        throw new InvalidOperationException();
     }
 
     private static bool ShouldProcessDirectory(string dirPath)
